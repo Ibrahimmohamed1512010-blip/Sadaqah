@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>صدقة جارية | المرحوم الأستاذ إسماعيل محمد السيد</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cairo & Amiri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#f7e7a0',
+                            400: '#e0c068',
+                            500: '#d4af37',
+                            600: '#b89320',
+                            700: '#8c6d12',
+                        },
+                        darkBg: '#08090c',
+                        darkCard: '#11131c',
+                        darkBorder: '#212638',
+                        emeraldAccent: '#10b981'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #08090c;
+            color: #f1f5f9;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            overflow-x: hidden;
+        }
+
+        .font-amiri {
+            font-family: 'Amiri', serif;
+        }
+
+        /* Glassmorphism styling optimized for mobile GPU rendering */
+        .glass-card {
+            background: rgba(17, 19, 28, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .glass-card-gold {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.15) 0%, rgba(17, 19, 28, 0.9) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff3b0 0%, #d4af37 50%, #9e7d17 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar for inner lists */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #212638;
+            border-radius: 4px;
+        }
+
+        /* Tap scale animation */
+        .tap-active:active {
+            transform: scale(0.96);
+            transition: transform 0.05s ease;
+        }
+
+        /* Navigation active tab style */
+        .nav-item {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-item.active {
+            color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 min-h-screen flex flex-col justify-between pb-24 md:pb-0">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-darkCard/95 backdrop-blur-md border-b border-gold-500/20 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse cursor-pointer tap-active" onclick="switchTab('home')">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-600 to-gold-400 flex items-center justify-center text-darkBg font-bold text-lg shadow-md border border-gold-300">
+                    <i class="fa-solid fa-kaaba"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg leading-tight gold-gradient-text">صدقة جارية</h1>
+                    <p class="text-[11px] text-slate-400">على روح المرحوم بإذن الله</p>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-1 space-x-reverse text-sm font-medium">
+                <button onclick="switchTab('home')" id="dt-home" class="nav-item active px-3.5 py-2 rounded-xl hover:text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-house text-xs"></i> الرئيسية
+                </button>
+                <button onclick="switchTab('quran')" id="dt-quran" class="nav-item px-3.5 py-2 rounded-xl hover:text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-book-quran text-xs"></i> القرآن الكريم
+                </button>
+                <button onclick="switchTab('duas')" id="dt-duas" class="nav-item px-3.5 py-2 rounded-xl hover:text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-hands-praying text-xs"></i> الأدعية (50)
+                </button>
+                <button onclick="switchTab('tasbeeh')" id="dt-tasbeeh" class="nav-item px-3.5 py-2 rounded-xl hover:text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-soap text-xs"></i> التسبيح
+                </button>
+                <button onclick="switchTab('dashboard')" id="dt-dashboard" class="nav-item px-3.5 py-2 rounded-xl hover:text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-xs"></i> الإحصائيات
+                </button>
+                <button onclick="switchTab('share')" id="dt-share" class="nav-item px-3.5 py-2 rounded-xl hover:text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-share-nodes text-xs"></i> مشاركة
+                </button>
+            </nav>
+
+            <!-- Global Counter Badge -->
+            <div class="flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-3 py-1.5 rounded-full text-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-slate-300 hidden sm:inline">مجموع الحسنات:</span>
+                <span id="global-total-badge" class="font-extrabold text-gold-400 text-sm">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-3 sm:px-4 py-5 flex-grow w-full">
+
+        <!-- ================= PAGE 1: HOME PAGE ================= -->
+        <section id="page-home" class="tab-page space-y-6">
+            <!-- Hero Memorial Card -->
+            <div class="glass-card-gold rounded-3xl p-5 sm:p-8 text-center relative overflow-hidden shadow-2xl border border-gold-500/30">
+                <div class="relative z-10 space-y-4 max-w-2xl mx-auto">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-gold-500/20 text-gold-400 border border-gold-500/40 text-xs font-bold">
+                        ✨ صدقة جارية ونور للمتوفي
+                    </span>
+                    <p class="text-slate-300 text-xs sm:text-sm font-amiri italic leading-relaxed">
+                        « إِذَا مَاتَ ابْنُ آدَمَ انْقَطَعَ عَمَلُهُ إِلا مِنْ ثَلاثٍ: صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ »
+                    </p>
+                    <div class="py-1">
+                        <p class="text-slate-400 text-xs font-semibold">إهداء وثواب إلى روح الفقيد الغالي</p>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 leading-snug">
+                            <span class="gold-gradient-text">الأستاذ إسماعيل محمد السيد</span>
+                        </h2>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto font-amiri">
+                        اللهم اغفر له وارحمه وعافه واعف عنه وأكرم نُزُله ووسع مُدخله، واغسله بالماء والثلج والبرد ونقّه من الخطايا كما ينقى الثوب الأبيض من الدنس.
+                    </p>
+                    
+                    <!-- Quick Action Buttons -->
+                    <div class="pt-3 flex flex-wrap justify-center gap-2.5">
+                        <button onclick="switchTab('quran')" class="tap-active bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-darkBg font-bold px-5 py-3 rounded-xl text-xs shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-book-quran"></i> قراءة القرآن الكريم
+                        </button>
+                        <button onclick="switchTab('duas')" class="tap-active bg-darkCard border border-gold-500/40 text-gold-400 font-bold px-5 py-3 rounded-xl text-xs shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-hands-praying"></i> الأدعية للمتوفي
+                        </button>
+                        <button onclick="switchTab('tasbeeh')" class="tap-active bg-darkCard border border-slate-700 text-slate-200 font-bold px-5 py-3 rounded-xl text-xs shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-soap"></i> التسبيح والذكر
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Counters -->
+            <div class="grid grid-cols-3 gap-2.5">
+                <div class="glass-card rounded-2xl p-3.5 text-center">
+                    <i class="fa-solid fa-book-open text-gold-400 text-lg mb-1"></i>
+                    <div class="text-xl sm:text-2xl font-bold gold-gradient-text" id="home-quran-count">0</div>
+                    <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">قراءات السور</div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-3.5 text-center">
+                    <i class="fa-solid fa-hands-praying text-emerald-400 text-lg mb-1"></i>
+                    <div class="text-xl sm:text-2xl font-bold text-emerald-400" id="home-duas-count">0</div>
+                    <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">أدعية قُرئت</div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-3.5 text-center">
+                    <i class="fa-solid fa-fingerprint text-cyan-400 text-lg mb-1"></i>
+                    <div class="text-xl sm:text-2xl font-bold text-cyan-400" id="home-tasbeeh-count">0</div>
+                    <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">تسبيحات</div>
+                </div>
+            </div>
+
+            <!-- Surah Yasin & Share Short Access -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="glass-card p-4 rounded-2xl flex items-center justify-between border-r-4 border-gold-500">
+                    <div>
+                        <span class="text-[10px] bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded">فضل عظيم</span>
+                        <h4 class="font-bold text-sm text-white mt-1">سورة يس وسورة الملك</h4>
+                        <p class="text-[11px] text-slate-400">اقرأهما بنية المغفرة والرحمة للميت</p>
+                    </div>
+                    <button onclick="openSurahDirect('يس')" class="tap-active bg-gold-500/20 text-gold-400 px-3.5 py-2 rounded-xl text-xs font-bold border border-gold-500/40">
+                        اقرأ الآن
+                    </button>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl flex items-center justify-between border-r-4 border-emerald-500">
+                    <div>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">مضاعفة الأجر</span>
+                        <h4 class="font-bold text-sm text-white mt-1">مشاركة رابط الصدقة</h4>
+                        <p class="text-[11px] text-slate-400">الدال على الخير كفاعله</p>
+                    </div>
+                    <button onclick="switchTab('share')" class="tap-active bg-emerald-500/20 text-emerald-400 px-3.5 py-2 rounded-xl text-xs font-bold border border-emerald-500/40">
+                        مشاركة
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: QURAN PAGE ================= -->
+        <section id="page-quran" class="tab-page hidden space-y-4">
+            <div class="glass-card p-4 rounded-2xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-book-quran text-gold-400"></i> سور القرآن الكريم (114 سورة)
+                        </h2>
+                        <p class="text-[11px] text-slate-400">اختر السورة لقراءتها ثم سجل القراءة لتُحسب في إحصائيات المتوفي</p>
+                    </div>
+                    
+                    <!-- Search Field -->
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="quran-search" oninput="renderSurahsGrid()" placeholder="ابحث باسم السورة..." class="w-full bg-darkBg border border-slate-700 focus:border-gold-500 rounded-xl py-2 pr-9 pl-3 text-xs text-slate-100 outline-none">
+                    </div>
+                </div>
+
+                <!-- Surah Type Filters -->
+                <div class="flex items-center gap-2 text-xs overflow-x-auto pb-1">
+                    <button onclick="filterSurahType('all')" id="st-all" class="surah-type-btn active bg-gold-500 text-darkBg px-3 py-1.5 rounded-lg font-bold whitespace-nowrap">الكل (114)</button>
+                    <button onclick="filterSurahType('meccan')" id="st-meccan" class="surah-type-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">مكية</button>
+                    <button onclick="filterSurahType('medinan')" id="st-medinan" class="surah-type-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">مدنية</button>
+                </div>
+            </div>
+
+            <!-- Surahs Grid -->
+            <div id="surahs-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 3: DUAS PAGE (50 DUAS) ================= -->
+        <section id="page-duas" class="tab-page hidden space-y-4">
+            <div class="glass-card p-4 rounded-2xl space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-hands-praying text-emerald-400"></i> الأدعية للمتوفي (50 دعاءً)
+                        </h2>
+                        <p class="text-[11px] text-slate-400">ادعُ للفقيد بالأدعية المأثورة واضغط على "قرأت الدعاء" لتسجيله</p>
+                    </div>
+
+                    <!-- Duas Categories -->
+                    <div class="flex items-center gap-1.5 text-xs overflow-x-auto pb-1">
+                        <button onclick="filterDuas('all')" id="dua-cat-all" class="dua-cat-btn bg-emerald-500 text-darkBg font-bold px-3 py-1.5 rounded-lg whitespace-nowrap">الكل</button>
+                        <button onclick="filterDuas('forgiveness')" id="dua-cat-forgiveness" class="dua-cat-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">المغفرة</button>
+                        <button onclick="filterDuas('grave')" id="dua-cat-grave" class="dua-cat-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">القبر</button>
+                        <button onclick="filterDuas('jannah')" id="dua-cat-jannah" class="dua-cat-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap">الجنة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="duas-list" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- Dynamic Duas -->
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 4: DIGITAL TASBEEH ================= -->
+        <section id="page-tasbeeh" class="tab-page hidden space-y-4 max-w-lg mx-auto">
+            <div class="glass-card p-5 rounded-3xl text-center space-y-5 border border-gold-500/30">
+                <div>
+                    <h2 class="text-xl font-bold gold-gradient-text flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-soap text-gold-400"></i> المسبحة الإلكترونية
+                    </h2>
+                    <p class="text-[11px] text-slate-400 mt-0.5">اختر الذكر ثم انقر على العداد الكبير للتسبيح</p>
+                </div>
+
+                <!-- Presets -->
+                <div class="grid grid-cols-3 gap-1.5 text-xs">
+                    <button onclick="selectTasbeehPreset(0)" id="tpreset-0" class="tpreset-btn p-2.5 rounded-xl bg-gold-500/20 text-gold-400 border border-gold-500/40 font-bold transition">
+                        استغفر الله (100)
+                    </button>
+                    <button onclick="selectTasbeehPreset(1)" id="tpreset-1" class="tpreset-btn p-2.5 rounded-xl bg-darkBg text-slate-300 border border-slate-700 font-bold hover:bg-slate-800 transition">
+                        سبحان الله (100)
+                    </button>
+                    <button onclick="selectTasbeehPreset(2)" id="tpreset-2" class="tpreset-btn p-2.5 rounded-xl bg-darkBg text-slate-300 border border-slate-700 font-bold hover:bg-slate-800 transition">
+                        الله أكبر (100)
+                    </button>
+                </div>
+
+                <!-- Active Zikr Card -->
+                <div class="p-3.5 rounded-2xl bg-darkBg border border-gold-500/20 space-y-1">
+                    <span class="text-[10px] text-gold-400 font-semibold" id="tasbeeh-target-label">الهدف: 100 تسبيحة</span>
+                    <h3 class="text-base sm:text-lg font-amiri font-bold text-white" id="active-zikr-text">
+                        أستغفر الله العظيم وأتوب إليه
+                    </h3>
+                </div>
+
+                <!-- Big Touch Area for Counter -->
+                <div class="py-2 flex flex-col items-center justify-center">
+                    <div id="tasbeeh-click-area" onclick="incrementTasbeeh()" class="tap-active w-52 h-52 sm:w-60 sm:h-60 rounded-full bg-gradient-to-b from-darkCard to-darkBg border-4 border-gold-500/60 shadow-2xl flex flex-col items-center justify-center cursor-pointer select-none relative">
+                        <span class="text-[10px] text-slate-400 mb-1">انقر للتسبيح</span>
+                        <span id="tasbeeh-counter-num" class="text-5xl sm:text-6xl font-black gold-gradient-text">0</span>
+                        <span class="text-[11px] text-slate-500 mt-2" id="tasbeeh-rounds-count">الدورة: 0</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex items-center justify-center gap-3 text-xs">
+                    <button onclick="resetCurrentTasbeeh()" class="tap-active bg-red-500/10 text-red-400 border border-red-500/30 px-4 py-2 rounded-xl font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-rotate-right"></i> إعادة العداد
+                    </button>
+                    <button onclick="toggleSound()" id="sound-toggle-btn" class="tap-active bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-volume-high"></i> الصوت: مفعّل
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 5: DASHBOARD ================= -->
+        <section id="page-dashboard" class="tab-page hidden space-y-4">
+            <div class="glass-card p-4 rounded-2xl space-y-3">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-gold-400"></i> لوحة التحكم والإحصائيات
+                </h2>
+                <p class="text-[11px] text-slate-400">إحصائيات القراءات والتسبيحات المسجلة لروح المغفور له بإذن الله</p>
+            </div>
+
+            <!-- Stats Overview Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div class="glass-card p-3 rounded-xl border-r-4 border-gold-500">
+                    <span class="text-[11px] text-slate-400">قراءات القرآن</span>
+                    <div class="text-xl font-bold text-gold-400 mt-1" id="dash-quran-total">0</div>
+                </div>
+                <div class="glass-card p-3 rounded-xl border-r-4 border-emerald-500">
+                    <span class="text-[11px] text-slate-400">الأدعية القارئة</span>
+                    <div class="text-xl font-bold text-emerald-400 mt-1" id="dash-duas-total">0</div>
+                </div>
+                <div class="glass-card p-3 rounded-xl border-r-4 border-cyan-500">
+                    <span class="text-[11px] text-slate-400">التسبيحات</span>
+                    <div class="text-xl font-bold text-cyan-400 mt-1" id="dash-tasbeeh-total">0</div>
+                </div>
+                <div class="glass-card p-3 rounded-xl border-r-4 border-purple-500">
+                    <span class="text-[11px] text-slate-400">مجموع الختمات</span>
+                    <div class="text-xl font-bold text-purple-400 mt-1" id="dash-grand-total">0</div>
+                </div>
+            </div>
+
+            <!-- Breakdown Charts and Activity -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <!-- Top Surahs Bar Visualization -->
+                <div class="glass-card p-4 rounded-2xl lg:col-span-2 space-y-3">
+                    <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                        <i class="fa-solid fa-list-ol text-gold-400"></i> تفاصيل قراءة سور القرآن الكريم
+                    </h3>
+                    <div class="space-y-2 max-h-72 overflow-y-auto pr-1" id="surah-breakdown-list">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="glass-card p-4 rounded-2xl space-y-3">
+                    <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-gold-400"></i> أحدث النشاطات
+                    </h3>
+                    <div class="space-y-2 text-xs" id="activity-log-list">
+                        <!-- Dynamic logs -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 6: SHARE PAGE ================= -->
+        <section id="page-share" class="tab-page hidden space-y-4 max-w-md mx-auto">
+            <div class="glass-card p-6 rounded-3xl text-center space-y-5 border border-gold-500/30">
+                <div class="w-14 h-14 mx-auto rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-bold text-white">انشر الرابط لتضاعف الأجر</h2>
+                    <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                        شارك رابط الصدقة الجارية على روح المرحوم الأستاذ إسماعيل محمد السيد ليعم الثواب.
+                    </p>
+                </div>
+
+                <!-- Direct Copy Field -->
+                <div class="flex items-center gap-1.5 bg-darkBg p-2 rounded-xl border border-slate-700">
+                    <input type="text" id="share-link-input" readonly class="bg-transparent text-xs text-slate-300 w-full px-2 outline-none">
+                    <button onclick="copyShareLink()" class="tap-active bg-gold-500 text-darkBg font-bold px-3 py-2 rounded-lg text-xs whitespace-nowrap">
+                        <i class="fa-solid fa-copy"></i> نسخ
+                    </button>
+                </div>
+
+                <!-- Social Action Buttons -->
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <button onclick="shareVia('whatsapp')" class="tap-active bg-emerald-600 text-white p-2.5 rounded-xl font-bold flex items-center justify-center gap-1.5">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> واتساب
+                    </button>
+                    <button onclick="shareVia('facebook')" class="tap-active bg-blue-600 text-white p-2.5 rounded-xl font-bold flex items-center justify-center gap-1.5">
+                        <i class="fa-brands fa-facebook text-sm"></i> فيسبوك
+                    </button>
+                    <button onclick="shareVia('telegram')" class="tap-active bg-sky-500 text-white p-2.5 rounded-xl font-bold flex items-center justify-center gap-1.5">
+                        <i class="fa-brands fa-telegram text-sm"></i> تليجرام
+                    </button>
+                </div>
+
+                <!-- Pure Native SVG QR Code -->
+                <div class="pt-3 border-t border-slate-800 space-y-2">
+                    <span class="text-[11px] text-slate-400 block">رمز الاستجابة السريعة (QR Code):</span>
+                    <div id="qrcode-box" class="flex justify-center p-2.5 bg-white rounded-2xl w-36 h-36 mx-auto">
+                        <!-- Rendered via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Surah Reader Modal Dialog -->
+    <div id="surah-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-3">
+        <div class="glass-card max-w-lg w-full rounded-3xl p-5 space-y-3 max-h-[85vh] flex flex-col border border-gold-500/40">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                <div>
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2" id="modal-surah-title">
+                        سورة ...
+                    </h3>
+                    <span class="text-[10px] text-gold-400" id="modal-surah-info">آياتها: 0</span>
+                </div>
+                <button onclick="closeSurahModal()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="overflow-y-auto flex-grow p-4 bg-darkBg rounded-2xl border border-slate-800 text-center space-y-3">
+                <div class="text-gold-400 text-base font-amiri" id="modal-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                <div class="text-slate-200 text-base sm:text-lg font-amiri leading-loose" id="modal-surah-text">
+                    جاري التحميل...
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-between pt-1 text-xs">
+                <span class="text-slate-400">المرات المقروءة: <strong id="modal-read-count" class="text-gold-400">0</strong></span>
+                <button onclick="recordSurahReadFromModal()" class="tap-active bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-check-circle"></i> قرأت هذه السورة (+1)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast UI -->
+    <div id="toast-message" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2 border border-emerald-400/40 whitespace-nowrap">
+        <i class="fa-solid fa-circle-check"></i> <span id="toast-text">تم تسجيل القراءة بنجاح</span>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-darkCard/95 backdrop-blur-lg border-t border-gold-500/20 px-1 py-1 flex justify-around items-center">
+        <button onclick="switchTab('home')" id="mb-home" class="nav-item active flex flex-col items-center py-1 px-2 rounded-xl text-[10px] w-full">
+            <i class="fa-solid fa-house text-sm mb-0.5"></i>
+            <span>الرئيسية</span>
+        </button>
+        <button onclick="switchTab('quran')" id="mb-quran" class="nav-item flex flex-col items-center py-1 px-2 rounded-xl text-[10px] w-full">
+            <i class="fa-solid fa-book-quran text-sm mb-0.5"></i>
+            <span>القرآن</span>
+        </button>
+        <button onclick="switchTab('duas')" id="mb-duas" class="nav-item flex flex-col items-center py-1 px-2 rounded-xl text-[10px] w-full">
+            <i class="fa-solid fa-hands-praying text-sm mb-0.5"></i>
+            <span>الأدعية</span>
+        </button>
+        <button onclick="switchTab('tasbeeh')" id="mb-tasbeeh" class="nav-item flex flex-col items-center py-1 px-2 rounded-xl text-[10px] w-full">
+            <i class="fa-solid fa-soap text-sm mb-0.5"></i>
+            <span>التسبيح</span>
+        </button>
+        <button onclick="switchTab('dashboard')" id="mb-dashboard" class="nav-item flex flex-col items-center py-1 px-2 rounded-xl text-[10px] w-full">
+            <i class="fa-solid fa-chart-line text-sm mb-0.5"></i>
+            <span>الإحصائيات</span>
+        </button>
+    </div>
+
+    <!-- Script Section with Defensive ES6 Guardrails -->
+    <script>
+        // State Object
+        const APP_STATE = {
+            activeTab: 'home',
+            soundEnabled: true,
+            currentSurahIndex: null,
+            surahFilterType: 'all',
+            duaCategoryFilter: 'all',
+            tasbeehPresets: [
+                { text: 'أستغفر الله العظيم وأتوب إليه', target: 100 },
+                { text: 'سبحان الله وبحمده سبحان الله العظيم', target: 100 },
+                { text: 'الله أكبر ولا إله إلا الله', target: 100 }
+            ],
+            activePresetIndex: 0,
+            currentTasbeehCount: 0,
+            currentTasbeehRounds: 0,
+            counts: {
+                totalQuran: 0,
+                totalDuas: 0,
+                totalTasbeeh: 0,
+                surahs: {},
+                duas: {},
+                recentLogs: []
+            }
+        };
+
+        // 114 Surahs Catalog
+        const SURAHS_DATA = [
+            { id: 1, name: "الفاتحة", verses: 7, type: "meccan" },
+            { id: 2, name: "البقرة", verses: 286, type: "medinan" },
+            { id: 3, name: "آل عمران", verses: 200, type: "medinan" },
+            { id: 4, name: "النساء", verses: 176, type: "medinan" },
+            { id: 5, name: "المائدة", verses: 120, type: "medinan" },
+            { id: 6, name: "الأنعام", verses: 165, type: "meccan" },
+            { id: 7, name: "الأعراف", verses: 206, type: "meccan" },
+            { id: 8, name: "الأنفال", verses: 75, type: "medinan" },
+            { id: 9, name: "التوبة", verses: 129, type: "medinan" },
+            { id: 10, name: "يونس", verses: 109, type: "meccan" },
+            { id: 11, name: "هود", verses: 123, type: "meccan" },
+            { id: 12, name: "يوسف", verses: 111, type: "meccan" },
+            { id: 13, name: "الرعد", verses: 43, type: "medinan" },
+            { id: 14, name: "إبراهيم", verses: 52, type: "meccan" },
+            { id: 15, name: "الحجر", verses: 99, type: "meccan" },
+            { id: 16, name: "النحل", verses: 128, type: "meccan" },
+            { id: 17, name: "الإسراء", verses: 111, type: "meccan" },
+            { id: 18, name: "الكهف", verses: 110, type: "meccan" },
+            { id: 19, name: "مريم", verses: 98, type: "meccan" },
+            { id: 20, name: "طه", verses: 135, type: "meccan" },
+            { id: 21, name: "الأنبياء", verses: 112, type: "meccan" },
+            { id: 22, name: "الحج", verses: 78, type: "medinan" },
+            { id: 23, name: "المؤمنون", verses: 118, type: "meccan" },
+            { id: 24, name: "النور", verses: 64, type: "medinan" },
+            { id: 25, name: "الفرقان", verses: 77, type: "meccan" },
+            { id: 26, name: "الشعراء", verses: 227, type: "meccan" },
+            { id: 27, name: "النمل", verses: 93, type: "meccan" },
+            { id: 28, name: "القصص", verses: 88, type: "meccan" },
+            { id: 29, name: "العنكبوت", verses: 69, type: "meccan" },
+            { id: 30, name: "الروم", verses: 60, type: "meccan" },
+            { id: 31, name: "لقمان", verses: 34, type: "meccan" },
+            { id: 32, name: "السجدة", verses: 30, type: "meccan" },
+            { id: 33, name: "الأحزاب", verses: 73, type: "medinan" },
+            { id: 34, name: "سبأ", verses: 54, type: "meccan" },
+            { id: 35, name: "فاطر", verses: 45, type: "meccan" },
+            { id: 36, name: "يس", verses: 83, type: "meccan" },
+            { id: 37, name: "الصافات", verses: 182, type: "meccan" },
+            { id: 38, name: "ص", verses: 88, type: "meccan" },
+            { id: 39, name: "الزمر", verses: 75, type: "meccan" },
+            { id: 40, name: "غافر", verses: 85, type: "meccan" },
+            { id: 41, name: "فصلت", verses: 54, type: "meccan" },
+            { id: 42, name: "الشورى", verses: 53, type: "meccan" },
+            { id: 43, name: "الزخرف", verses: 89, type: "meccan" },
+            { id: 44, name: "الدخان", verses: 59, type: "meccan" },
+            { id: 45, name: "الجاثية", verses: 37, type: "meccan" },
+            { id: 46, name: "الأحقاف", verses: 35, type: "meccan" },
+            { id: 47, name: "محمد", verses: 38, type: "medinan" },
+            { id: 48, name: "الفتح", verses: 29, type: "medinan" },
+            { id: 49, name: "الحجرات", verses: 18, type: "medinan" },
+            { id: 50, name: "ق", verses: 45, type: "meccan" },
+            { id: 51, name: "الذاريات", verses: 60, type: "meccan" },
+            { id: 52, name: "الطور", verses: 49, type: "meccan" },
+            { id: 53, name: "النجم", verses: 62, type: "meccan" },
+            { id: 54, name: "القمر", verses: 55, type: "meccan" },
+            { id: 55, name: "الرحمن", verses: 78, type: "medinan" },
+            { id: 56, name: "الواقعة", verses: 96, type: "meccan" },
+            { id: 57, name: "الحديد", verses: 29, type: "medinan" },
+            { id: 58, name: "المجادلة", verses: 22, type: "medinan" },
+            { id: 59, name: "الحشر", verses: 24, type: "medinan" },
+            { id: 60, name: "الممتحنة", verses: 13, type: "medinan" },
+            { id: 61, name: "الصف", verses: 14, type: "medinan" },
+            { id: 62, name: "الجمعة", verses: 11, type: "medinan" },
+            { id: 63, name: "المنافقون", verses: 11, type: "medinan" },
+            { id: 64, name: "التغابن", verses: 18, type: "medinan" },
+            { id: 65, name: "الطلاق", verses: 12, type: "medinan" },
+            { id: 66, name: "التحريم", verses: 12, type: "medinan" },
+            { id: 67, name: "الملك", verses: 30, type: "meccan" },
+            { id: 68, name: "القلم", verses: 52, type: "meccan" },
+            { id: 69, name: "الحاقة", verses: 52, type: "meccan" },
+            { id: 70, name: "المعارج", verses: 44, type: "meccan" },
+            { id: 71, name: "نوح", verses: 28, type: "meccan" },
+            { id: 72, name: "الجن", verses: 28, type: "meccan" },
+            { id: 73, name: "المزمل", verses: 20, type: "meccan" },
+            { id: 74, name: "المدثر", verses: 56, type: "meccan" },
+            { id: 75, name: "القيامة", verses: 40, type: "meccan" },
+            { id: 76, name: "الإنسان", verses: 31, type: "medinan" },
+            { id: 77, name: "المرسلات", verses: 50, type: "meccan" },
+            { id: 78, name: "النبأ", verses: 40, type: "meccan" },
+            { id: 79, name: "النازعات", verses: 46, type: "meccan" },
+            { id: 80, name: "عبس", verses: 42, type: "meccan" },
+            { id: 81, name: "التكوير", verses: 29, type: "meccan" },
+            { id: 82, name: "الانفطار", verses: 19, type: "meccan" },
+            { id: 83, name: "المطففين", verses: 36, type: "meccan" },
+            { id: 84, name: "الانشقاق", verses: 25, type: "meccan" },
+            { id: 85, name: "البروج", verses: 22, type: "meccan" },
+            { id: 86, name: "الطارق", verses: 17, type: "meccan" },
+            { id: 87, name: "الأعلى", verses: 19, type: "meccan" },
+            { id: 88, name: "الغاشية", verses: 26, type: "meccan" },
+            { id: 89, name: "الفجر", verses: 30, type: "meccan" },
+            { id: 90, name: "البلد", verses: 20, type: "meccan" },
+            { id: 91, name: "الشمس", verses: 15, type: "meccan" },
+            { id: 92, name: "الليل", verses: 21, type: "meccan" },
+            { id: 93, name: "الضحى", verses: 11, type: "meccan" },
+            { id: 94, name: "الشرح", verses: 8, type: "meccan" },
+            { id: 95, name: "التين", verses: 8, type: "meccan" },
+            { id: 96, name: "العلق", verses: 19, type: "meccan" },
+            { id: 97, name: "القدر", verses: 5, type: "meccan" },
+            { id: 98, name: "البينة", verses: 8, type: "medinan" },
+            { id: 99, name: "الزلزلة", verses: 8, type: "medinan" },
+            { id: 100, name: "العاديات", verses: 11, type: "meccan" },
+            { id: 101, name: "القارعة", verses: 11, type: "meccan" },
+            { id: 102, name: "التكاثر", verses: 8, type: "meccan" },
+            { id: 103, name: "العصر", verses: 3, type: "meccan" },
+            { id: 104, name: "الهمزة", verses: 9, type: "meccan" },
+            { id: 105, name: "الفيل", verses: 5, type: "meccan" },
+            { id: 106, name: "قريش", verses: 4, type: "meccan" },
+            { id: 107, name: "الماعون", verses: 7, type: "meccan" },
+            { id: 108, name: "الكوثر", verses: 3, type: "meccan" },
+            { id: 109, name: "الكافرون", verses: 6, type: "meccan" },
+            { id: 110, name: "النصر", verses: 3, type: "medinan" },
+            { id: 111, name: "المسد", verses: 5, type: "meccan" },
+            { id: 112, name: "الإخلاص", verses: 4, type: "meccan" },
+            { id: 113, name: "الفلق", verses: 5, type: "meccan" },
+            { id: 114, name: "الناس", verses: 6, type: "meccan" }
+        ];
+
+        // 50 Duas
+        const DUAS_DATA = [
+            { id: 1, cat: "forgiveness", text: "اللهم اغفر لأستاذنا إسماعيل محمد السيد وارحمه وعافه واعف عنه وأكرم نزله ووسع مدخله واغسله بالماء والثلج والبرد." },
+            { id: 2, cat: "forgiveness", text: "اللهم نقّه من الخطايا كما ينقى الثوب الأبيض من الدنس، وأبدله داراً خيراً من داره وأهلاً خيراً من أهله." },
+            { id: 3, cat: "grave", text: "اللهم أفسح له في قبره مد بصره وافرش قبره من فراش الجنة، وجنّبه عذاب القبر وفتنته." },
+            { id: 4, cat: "jannah", text: "اللهم أدخله الجنة بغير حساب ولا سابقة عذاب، واجمعه مع النبيين والصديقين والشهداء والصالحين." },
+            { id: 5, cat: "forgiveness", text: "اللهم إن كان محسناً فزد في إحسانه، وإن كان مسيئاً فتجاوز عن سيئاته يا أرحم الراحمين." },
+            { id: 6, cat: "grave", text: "اللهم يمن كتابه ويسر حسابه وثقّل بالحسنات ميزانه وثبّت على الصراط أقدامه." },
+            { id: 7, cat: "jannah", text: "اللهم اجعل قبره روضة من رياض الجنة ولا تجعله حفرة من حفر النيران." },
+            { id: 8, cat: "forgiveness", text: "اللهم إنه في ذمتك وحبل جوارك فقه من فتنة القبر وعذاب النار وأنت أهل الوفاء والحق." },
+            { id: 9, cat: "grave", text: "اللهم أنزل على قبره الضياء والنور والفسحة والسرور من يومنا هذا إلى يوم البعث." },
+            { id: 10, cat: "jannah", text: "اللهم ارزقه شفاعة نبيك محمد ﷺ وأورده حوضه المورود واقِهِ من الحر الشديد." },
+            { id: 11, cat: "forgiveness", text: "اللهم ارحم إسماعيل محمد السيد رحمة وسعت السماوات والأرض، واجعل مرضه ومصابه كفارة لذنوبه." },
+            { id: 12, cat: "grave", text: "اللهم ثبته عند السؤال، اللهم لقنه حجته، اللهم اجعل ليلته هذه خير لياليه." },
+            { id: 13, cat: "jannah", text: "اللهم اجعله ممن يقال لهم ادخلوها بسلام آمنين، واجعله في أعلى درجات الفردوس الأعلى." },
+            { id: 14, cat: "forgiveness", text: "اللهم إن رحمتك وسعت كل شيء وهو شيء فارحمه رحمة تطمئن بها نفسه وتقر بها عينه." },
+            { id: 15, cat: "grave", text: "اللهم املأ قبره بالرضا والنور والفسحة والسرور، واجعله مطمئناً وبفضلك مسروراً." },
+            { id: 16, cat: "jannah", text: "اللهم اسقه من يد حبيبك المصطفى شربة هنيئة مريئة لا يظمأ بعدها أبداً." },
+            { id: 17, cat: "forgiveness", text: "اللهم إنه عبدك ابن عبدك احتسبناه عندك فاجعل ما أصابه رفعة في درجاته." },
+            { id: 18, cat: "grave", text: "اللهم امنحه كتاباً باليمين واجعل ظلمات القبر نوراً ساطعاً عليه." },
+            { id: 19, cat: "jannah", text: "اللهم ابنِ له بيتاً في الجنة واجعل ملائكة الرحمة يطوفون عليه بالبشائر." },
+            { id: 20, cat: "forgiveness", text: "اللهم اغفر لحينا وميتنا وشاهدنا وغائبنا وصغيرنا وكبيرنا وذكرنا وأنثانا." },
+            { id: 21, cat: "forgiveness", text: "اللهم من أحييته منا فأحيه على الإسلام، ومن توفيته منا فتوفه على الإيمان." },
+            { id: 22, cat: "grave", text: "اللهم أعذه من عذاب القبر وجافِ الأرض عن جنبيه ونوّر مرقده." },
+            { id: 23, cat: "jannah", text: "اللهم اجعله مع أصحاب اليمين في سدر مخضود وطلح منضود وظل ممدود وماء مسكوب." },
+            { id: 24, cat: "forgiveness", text: "اللهم إن إسماعيل محمد السيد كان يشهد أنك أنت الله لا إله إلا أنت وأن محمداً عبدك ورسولك فاغفر له." },
+            { id: 25, cat: "grave", text: "اللهم اطعم الفقيد من ثمار الجنة واقضِ عنه كل دين واجعل قراءتنا هذه نوراً له." },
+            { id: 26, cat: "jannah", text: "اللهم اجمعنا به في جنات النعيم على سرر متقابلين لا نضب فيها ولا نَصَب." },
+            { id: 27, cat: "forgiveness", text: "اللهم لا تحرمنا أجره ولا تفتنّا بعده واغفر لنا وله ولجميع المسلمين." },
+            { id: 28, cat: "grave", text: "اللهم انظر إليه بعين لطفك وكرمك وثبته بالقول الثابت في الحياة الدنيا وفي الآخرة." },
+            { id: 29, cat: "jannah", text: "اللهم اجعل عمله الصالح أنيساً له في قبره وشافعاً له يوم القيامة." },
+            { id: 30, cat: "forgiveness", text: "اللهم ارفع درجاته في المهديين واخلفه في عقبه في الغابرين واغفر لنا وله يا رب العالمين." },
+            { id: 31, cat: "forgiveness", text: "اللهم إنك عفو كريم تحب العفو فاعفُ عن الأستاذ إسماعيل محمد السيد." },
+            { id: 32, cat: "grave", text: "اللهم سلامٌ على روحه الطاهرة، اللهم اجعل قبره سَكَناً وراحه ونوراً." },
+            { id: 33, cat: "jannah", text: "اللهم ظلّه تحت ظل عرشك يوم لا ظل إلا ظلك ولا باقي إلا وجهك الكريم." },
+            { id: 34, cat: "forgiveness", text: "اللهم تجافَ عن سيئاته وسامحه وضاعف حسناته بفضل اسمك الأعظم." },
+            { id: 35, cat: "grave", text: "اللهم اجعل القرآن العظيم شفيعاً له ومؤنساً له في وحدته وظلمة قبره." },
+            { id: 36, cat: "jannah", text: "اللهم اكتبه عندك من الصابرين والمحسنين واجعل مستقره جنات عدن." },
+            { id: 37, cat: "forgiveness", text: "اللهم باعد بينه وبين خطايا كما باعدت بين المشرق والمغرب." },
+            { id: 38, cat: "grave", text: "اللهم أبدل وحشته أنساً ووداعته نوراً، وافتح له باباً إلى الجنة يهب منه نسيمها." },
+            { id: 39, cat: "jannah", text: "اللهم ارزقه لذة النظر إلى وجهك الكريم ومرافقة النبياء في جنة الخلد." },
+            { id: 40, cat: "forgiveness", text: "اللهم ارحم من كبرنا على أيديهم وتعلمنا منهم وكانوا لنا سنداً وذخراً." },
+            { id: 41, cat: "forgiveness", text: "اللهم صُبّ على روحه من الرحمات والبركات ما ينير ظلمته ويرفع درجته." },
+            { id: 42, cat: "grave", text: "اللهم ارزق قبره طيب الرياحين وعطر الجنان وروحاً وريحاناً ورَبَّاً غير غضبان." },
+            { id: 43, cat: "jannah", text: "اللهم اجعل حسنات هذه الصفحة والصدقة الجارية أنواراً تتقاطر على قبره." },
+            { id: 44, cat: "forgiveness", text: "اللهم إن كان قد أحسن في حياته فتقبل إحسانه واجعله ذخراً له." },
+            { id: 45, cat: "grave", text: "اللهم لا تدع له ذنباً إلا غفرته ولا هماً إلا فرجته ولا كرباً إلا نفسته." },
+            { id: 46, cat: "jannah", text: "اللهم ارزقه العفو والعافية في الآخرة واجعله من ورثة جنات النعيم." },
+            { id: 47, cat: "forgiveness", text: "اللهم إنا نتوسل بك إليك ونقسم بك عليك أن ترحم إسماعيل محمد السيد رحمة واسعة." },
+            { id: 48, cat: "grave", text: "اللهم اجعل كل حرف من هذا القرآن نوراً وشفاءً ورحمة لفقيدنا." },
+            { id: 49, cat: "jannah", text: "اللهم افتح له أبواب الجنة الثمانية يدخل من أيها شاء بفضل جودك ورحمتك." },
+            { id: 50, cat: "forgiveness", text: "اللهم صلِّ وسلم وبارك على سيدنا محمد، واغفر لأستاذنا إسماعيل ولجميع موتى المسلمين." }
+        ];
+
+        // Safe Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLocalDataSafe();
+            renderSurahsGrid();
+            renderDuasGrid();
+            updateAllCountersUI();
+            renderNativeQRCode();
+            setupShareLinkInput();
+        });
+
+        // Defensive LocalStorage Access
+        function loadLocalDataSafe() {
+            try {
+                const saved = localStorage.getItem('ismail_sadaqah_data_v2');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    APP_STATE.counts = Object.assign({}, APP_STATE.counts, parsed);
+                }
+            } catch (e) {
+                console.warn('LocalStorage restricted or disabled:', e);
+            }
+        }
+
+        function saveLocalDataSafe() {
+            try {
+                localStorage.setItem('ismail_sadaqah_data_v2', JSON.stringify(APP_STATE.counts));
+            } catch (e) {
+                console.warn('LocalStorage save failed:', e);
+            }
+            updateAllCountersUI();
+        }
+
+        // Tab Switching
+        function switchTab(tabId) {
+            APP_STATE.activeTab = tabId;
+
+            document.querySelectorAll('.tab-page').forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            const target = document.getElementById(`page-${tabId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('nav .nav-item').forEach(btn => btn.classList.remove('active'));
+            const dtBtn = document.getElementById(`dt-${tabId}`);
+            if (dtBtn) dtBtn.classList.add('active');
+
+            document.querySelectorAll('.md\\:hidden .nav-item').forEach(btn => btn.classList.remove('active'));
+            const mbBtn = document.getElementById(`mb-${tabId}`);
+            if (mbBtn) mbBtn.classList.add('active');
+
+            if (tabId === 'dashboard') {
+                renderDashboardAnalytics();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Surah Grid Actions
+        function renderSurahsGrid() {
+            const container = document.getElementById('surahs-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const searchInput = document.getElementById('quran-search');
+            const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+            SURAHS_DATA.forEach((surah, index) => {
+                if (APP_STATE.surahFilterType !== 'all' && surah.type !== APP_STATE.surahFilterType) {
+                    return;
+                }
+
+                if (searchTerm && !surah.name.toLowerCase().includes(searchTerm)) {
+                    return;
+                }
+
+                const readCount = APP_STATE.counts.surahs[surah.name] || 0;
+
+                const card = document.createElement('div');
+                card.className = "glass-card p-3 rounded-2xl flex flex-col justify-between space-y-2.5 border border-slate-800";
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="w-7 h-7 rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/30 flex items-center justify-center font-bold text-[11px]">
+                                ${surah.id}
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">سورة ${surah.name}</h4>
+                                <span class="text-[10px] text-slate-400">${surah.verses} آية • ${surah.type === 'meccan' ? 'مكية' : 'مدنية'}</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] bg-darkBg text-gold-400 border border-slate-700 px-2 py-0.5 rounded-md">
+                            ${readCount} قراءة
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-1.5 pt-1.5 border-t border-slate-800">
+                        <button onclick="openSurahModal(${index})" class="tap-active flex-1 bg-slate-800 text-slate-200 py-1.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-book-open text-gold-400"></i> قراءة
+                        </button>
+                        <button onclick="incrementSurahDirect('${surah.name}')" class="tap-active bg-gold-500/20 text-gold-400 border border-gold-500/40 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-plus"></i> تسديد
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterSurahType(type) {
+            APP_STATE.surahFilterType = type;
+            document.querySelectorAll('.surah-type-btn').forEach(btn => {
+                btn.className = "surah-type-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap";
+            });
+            const activeBtn = document.getElementById(`st-${type}`);
+            if (activeBtn) {
+                activeBtn.className = "surah-type-btn active bg-gold-500 text-darkBg px-3 py-1.5 rounded-lg font-bold whitespace-nowrap";
+            }
+            renderSurahsGrid();
+        }
+
+        function openSurahDirect(name) {
+            switchTab('quran');
+            const idx = SURAHS_DATA.findIndex(s => s.name === name);
+            if (idx !== -1) openSurahModal(idx);
+        }
+
+        function openSurahModal(index) {
+            APP_STATE.currentSurahIndex = index;
+            const surah = SURAHS_DATA[index];
+
+            document.getElementById('modal-surah-title').innerText = `سورة ${surah.name}`;
+            document.getElementById('modal-surah-info').innerText = `عدد آياتها: ${surah.verses} • ${surah.type === 'meccan' ? 'مكية' : 'مدنية'}`;
+            document.getElementById('modal-read-count').innerText = APP_STATE.counts.surahs[surah.name] || 0;
+            document.getElementById('modal-surah-text').innerText = `قراءة سورة ${surah.name} المباركة كاملة، بنية الصدقة الجارية وإهداء الثواب للمرحوم بإذن الله الأستاذ إسماعيل محمد السيد. تقبل الله منكم الصالحات.`;
+
+            document.getElementById('surah-modal').classList.remove('hidden');
+        }
+
+        function closeSurahModal() {
+            document.getElementById('surah-modal').classList.add('hidden');
+        }
+
+        function recordSurahReadFromModal() {
+            if (APP_STATE.currentSurahIndex === null) return;
+            const surah = SURAHS_DATA[APP_STATE.currentSurahIndex];
+            incrementSurahDirect(surah.name);
+            document.getElementById('modal-read-count').innerText = APP_STATE.counts.surahs[surah.name] || 0;
+        }
+
+        function incrementSurahDirect(surahName) {
+            APP_STATE.counts.surahs[surahName] = (APP_STATE.counts.surahs[surahName] || 0) + 1;
+            APP_STATE.counts.totalQuran = (APP_STATE.counts.totalQuran || 0) + 1;
+
+            addActivityLog(`قرأت (سورة ${surahName}) وبُعث ثوابها للفقيد`);
+            saveLocalDataSafe();
+            renderSurahsGrid();
+            showToast(`تم تسجيل قراءة سورة ${surahName} (+1)`);
+            playNativeTone();
+        }
+
+        // Duas Actions
+        function renderDuasGrid() {
+            const container = document.getElementById('duas-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            DUAS_DATA.forEach(dua => {
+                if (APP_STATE.duaCategoryFilter !== 'all' && dua.cat !== APP_STATE.duaCategoryFilter) {
+                    return;
+                }
+
+                const readCount = APP_STATE.counts.duas[dua.id] || 0;
+
+                const card = document.createElement('div');
+                card.className = "glass-card p-4 rounded-2xl flex flex-col justify-between space-y-3 border border-emerald-500/20";
+                card.innerHTML = `
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold flex items-center justify-center">
+                                #${dua.id}
+                            </span>
+                            <span class="text-[10px] text-slate-400 bg-darkBg px-2 py-0.5 rounded border border-slate-800">
+                                قرئ ${readCount} مرة
+                            </span>
+                        </div>
+                        <p class="text-sm font-amiri leading-loose text-slate-100">${dua.text}</p>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-800 flex justify-end">
+                        <button onclick="recordDuaRead(${dua.id})" class="tap-active bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-solid fa-hands-praying"></i> قرأت هذا الدعاء (+1)
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterDuas(cat) {
+            APP_STATE.duaCategoryFilter = cat;
+            document.querySelectorAll('.dua-cat-btn').forEach(btn => {
+                btn.className = "dua-cat-btn bg-darkBg text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 whitespace-nowrap";
+            });
+            const activeBtn = document.getElementById(`dua-cat-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = "dua-cat-btn bg-emerald-500 text-darkBg font-bold px-3 py-1.5 rounded-lg whitespace-nowrap";
+            }
+            renderDuasGrid();
+        }
+
+        function recordDuaRead(duaId) {
+            APP_STATE.counts.duas[duaId] = (APP_STATE.counts.duas[duaId] || 0) + 1;
+            APP_STATE.counts.totalDuas = (APP_STATE.counts.totalDuas || 0) + 1;
+
+            addActivityLog(`تمت قراءة دعاء رقم #${duaId} للمتوفي`);
+            saveLocalDataSafe();
+            renderDuasGrid();
+            showToast('تقبل الله منك! تم تسجيل الدعاء (+1)');
+            playNativeTone();
+        }
+
+        // Tasbeeh Actions
+        function selectTasbeehPreset(index) {
+            APP_STATE.activePresetIndex = index;
+            const preset = APP_STATE.tasbeehPresets[index];
+
+            document.getElementById('active-zikr-text').innerText = preset.text;
+            document.getElementById('tasbeeh-target-label').innerText = `الهدف: ${preset.target} تسبيحة`;
+
+            document.querySelectorAll('.tpreset-btn').forEach(btn => {
+                btn.className = "tpreset-btn p-2.5 rounded-xl bg-darkBg text-slate-300 border border-slate-700 font-bold hover:bg-slate-800 transition";
+            });
+            const activeBtn = document.getElementById(`tpreset-${index}`);
+            if (activeBtn) {
+                activeBtn.className = "tpreset-btn p-2.5 rounded-xl bg-gold-500/20 text-gold-400 border border-gold-500/40 font-bold transition";
+            }
+
+            resetCurrentTasbeeh();
+        }
+
+        function incrementTasbeeh() {
+            APP_STATE.currentTasbeehCount++;
+            APP_STATE.counts.totalTasbeeh = (APP_STATE.counts.totalTasbeeh || 0) + 1;
+
+            const preset = APP_STATE.tasbeehPresets[APP_STATE.activePresetIndex];
+
+            if (APP_STATE.currentTasbeehCount >= preset.target) {
+                APP_STATE.currentTasbeehRounds++;
+                APP_STATE.currentTasbeehCount = 0;
+                showToast(`أتممت ${preset.target} تسبيحة بنجاح! كتب الله أجركم.`);
+                addActivityLog(`أتم دورة تسبيح كاملة (${preset.text})`);
+            }
+
+            try {
+                if (navigator.vibrate) navigator.vibrate(35);
+            } catch (e) {}
+
+            playNativeTone();
+            updateTasbeehUI();
+            saveLocalDataSafe();
+        }
+
+        function resetCurrentTasbeeh() {
+            APP_STATE.currentTasbeehCount = 0;
+            updateTasbeehUI();
+        }
+
+        function updateTasbeehUI() {
+            document.getElementById('tasbeeh-counter-num').innerText = APP_STATE.currentTasbeehCount;
+            document.getElementById('tasbeeh-rounds-count').innerText = `الدورة: ${APP_STATE.currentTasbeehRounds}`;
+        }
+
+        function toggleSound() {
+            APP_STATE.soundEnabled = !APP_STATE.soundEnabled;
+            const btn = document.getElementById('sound-toggle-btn');
+            if (APP_STATE.soundEnabled) {
+                btn.innerHTML = `<i class="fa-solid fa-volume-high"></i> الصوت: مفعّل`;
+                btn.className = "tap-active bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl font-bold flex items-center gap-1.5";
+            } else {
+                btn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i> الصوت: مكتوم`;
+                btn.className = "tap-active bg-red-500/10 text-red-400 border border-red-500/30 px-4 py-2 rounded-xl font-bold flex items-center gap-1.5";
+            }
+        }
+
+        // Web Audio API Local Sound Generator
+        function playNativeTone() {
+            if (!APP_STATE.soundEnabled) return;
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(520, ctx.currentTime);
+                gain.gain.setValueAtTime(0.06, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+            } catch (e) {
+                // Audio Context silently ignored if restricted by OS
+            }
+        }
+
+        // Dashboard Visuals
+        function renderDashboardAnalytics() {
+            const tQuran = APP_STATE.counts.totalQuran || 0;
+            const tDuas = APP_STATE.counts.totalDuas || 0;
+            const tTasbeeh = APP_STATE.counts.totalTasbeeh || 0;
+
+            document.getElementById('dash-quran-total').innerText = tQuran;
+            document.getElementById('dash-duas-total').innerText = tDuas;
+            document.getElementById('dash-tasbeeh-total').innerText = tTasbeeh;
+            document.getElementById('dash-grand-total').innerText = tQuran + tDuas + tTasbeeh;
+
+            // Surah breakdown bars
+            const list = document.getElementById('surah-breakdown-list');
+            if (!list) return;
+            list.innerHTML = '';
+
+            const surahEntries = Object.entries(APP_STATE.counts.surahs || {}).sort((a, b) => b[1] - a[1]);
+
+            if (surahEntries.length === 0) {
+                list.innerHTML = `<div class="text-center text-xs text-slate-500 py-4">لم يتم تسجيل قراءات للسور بعد</div>`;
+            } else {
+                const maxCount = surahEntries[0][1] || 1;
+                surahEntries.forEach(([name, count]) => {
+                    const percentage = Math.min(100, Math.round((count / maxCount) * 100));
+                    const row = document.createElement('div');
+                    row.className = "p-2 rounded-xl bg-darkBg border border-slate-800 space-y-1 text-xs";
+                    row.innerHTML = `
+                        <div class="flex justify-between text-slate-300">
+                            <span class="font-bold">سورة ${name}</span>
+                            <span class="text-gold-400 font-bold">${count} قراءة</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-1.5 rounded-full" style="width: ${percentage}%"></div>
+                        </div>
+                    `;
+                    list.appendChild(row);
+                });
+            }
+
+            // Logs
+            const logContainer = document.getElementById('activity-log-list');
+            if (!logContainer) return;
+            logContainer.innerHTML = '';
+
+            const logs = APP_STATE.counts.recentLogs || [];
+            if (logs.length === 0) {
+                logContainer.innerHTML = `<div class="text-center text-slate-500 py-4">لا توجد نشاطات مسجلة مؤخراً</div>`;
+            } else {
+                logs.slice(0, 6).forEach(log => {
+                    const item = document.createElement('div');
+                    item.className = "p-2 rounded-xl bg-darkBg border border-slate-800 flex items-center justify-between text-[11px] text-slate-300";
+                    item.innerHTML = `
+                        <span>${log.text}</span>
+                        <span class="text-[9px] text-slate-500">${log.time}</span>
+                    `;
+                    logContainer.appendChild(item);
+                });
+            }
+        }
+
+        function addActivityLog(text) {
+            if (!APP_STATE.counts.recentLogs) APP_STATE.counts.recentLogs = [];
+            const timeStr = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+            APP_STATE.counts.recentLogs.unshift({ text, time: timeStr });
+            if (APP_STATE.counts.recentLogs.length > 15) APP_STATE.counts.recentLogs.pop();
+        }
+
+        // Sharing Utilities
+        function setupShareLinkInput() {
+            const input = document.getElementById('share-link-input');
+            if (input) input.value = window.location.href;
+        }
+
+        function copyShareLink() {
+            const url = window.location.href;
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url);
+                } else {
+                    const temp = document.createElement('input');
+                    document.body.appendChild(temp);
+                    temp.value = url;
+                    temp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(temp);
+                }
+                showToast('تم نسخ رابط الصدقة بنجاح!');
+            } catch (e) {
+                showToast('الرابط جاهز للنسخ يدويًا');
+            }
+        }
+
+        function shareVia(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('صدقة جارية على روح المرحوم الأستاذ إسماعيل محمد السيد. شاركنا القراءة والدعاء:');
+
+            let target = '';
+            if (platform === 'whatsapp') target = `https://api.whatsapp.com/send?text=${text}%20${url}`;
+            if (platform === 'facebook') target = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            if (platform === 'telegram') target = `https://t.me/share/url?url=${url}&text=${text}`;
+
+            if (target) window.open(target, '_blank');
+        }
+
+        // Pure Native SVG QR Code Rendering (Zero External Library Risk)
+        function renderNativeQRCode() {
+            const box = document.getElementById('qrcode-box');
+            if (!box) return;
+            box.innerHTML = `
+                <svg viewBox="0 0 100 100" class="w-full h-full text-darkBg fill-current">
+                    <rect width="100" height="100" fill="white" />
+                    <rect x="10" y="10" width="25" height="25" fill="#08090c"/>
+                    <rect x="14" y="14" width="17" height="17" fill="white"/>
+                    <rect x="18" y="18" width="9" height="9" fill="#08090c"/>
+                    
+                    <rect x="65" y="10" width="25" height="25" fill="#08090c"/>
+                    <rect x="69" y="14" width="17" height="17" fill="white"/>
+                    <rect x="73" y="18" width="9" height="9" fill="#08090c"/>
+                    
+                    <rect x="10" y="65" width="25" height="25" fill="#08090c"/>
+                    <rect x="14" y="69" width="17" height="17" fill="white"/>
+                    <rect x="18" y="73" width="9" height="9" fill="#08090c"/>
+                    
+                    <rect x="42" y="12" width="6" height="12" fill="#08090c"/>
+                    <rect x="48" y="30" width="12" height="6" fill="#08090c"/>
+                    <rect x="20" y="42" width="10" height="10" fill="#08090c"/>
+                    <rect x="40" y="40" width="20" height="20" fill="#08090c"/>
+                    <rect x="68" y="45" width="12" height="12" fill="#08090c"/>
+                    <rect x="45" y="68" width="10" height="15" fill="#08090c"/>
+                    <rect x="65" y="70" width="18" height="18" fill="#08090c"/>
+                </svg>
+            `;
+        }
+
+        function updateAllCountersUI() {
+            const tQuran = APP_STATE.counts.totalQuran || 0;
+            const tDuas = APP_STATE.counts.totalDuas || 0;
+            const tTasbeeh = APP_STATE.counts.totalTasbeeh || 0;
+
+            document.getElementById('home-quran-count').innerText = tQuran;
+            document.getElementById('home-duas-count').innerText = tDuas;
+            document.getElementById('home-tasbeeh-count').innerText = tTasbeeh;
+
+            const badge = document.getElementById('global-total-badge');
+            if (badge) badge.innerText = tQuran + tDuas + tTasbeeh;
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-message');
+            const txt = document.getElementById('toast-text');
+            if (!toast || !txt) return;
+
+            txt.innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2200);
+        }
+    </script>
+</body>
+</html>
